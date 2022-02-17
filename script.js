@@ -40,6 +40,15 @@ function getTheInput() {
   clothesCost = clothesInput.value;
 }
 
+function clearInput(e) {
+  e.preventDefault();
+  incomeInput.value = '';
+  foodInput.value = '';
+  rentInput.value = '';
+  clothesInput.value = '';
+  savingsInput.value = '';
+}
+
 function calculateTotalExpenseAndBalance() {
   const totalExpenses =
     Number(foodCost) + Number(rentCost) + Number(clothesCost);
@@ -117,3 +126,4 @@ function calculateSavings() {
 
 calculateBtn.addEventListener('click', handleSubmit);
 saveBtn.addEventListener('click', calculateSavings);
+clearBtn.addEventListener('click', clearInput);
