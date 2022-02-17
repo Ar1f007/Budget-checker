@@ -18,6 +18,29 @@ function handleSubmit(e) {
   getTheInput();
 
   isValid(incomeAmount, foodCost, rentCost, clothesCost);
+
+  calculateTotalExpenseAndBalance();
+}
+
+function calculateTotalExpenseAndBalance() {
+  const totalExpenses =
+    Number(foodCost) + Number(rentCost) + Number(clothesCost);
+  if (totalExpenses) {
+    totalExpenseEl.querySelector('span').textContent = totalExpenses;
+  }
+
+  if (totalExpenses > incomeAmount) {
+    showError(
+      form,
+      'Your total expenses is greater than your total income! 💣'
+    );
+  } else {
+    const balance = Number(incomeAmount) - totalExpenses;
+
+    if (balance) {
+      balanceEl.querySelector('span').textContent = balance;
+    }
+  }
 }
 
 function getTheInput() {
@@ -37,6 +60,23 @@ function isValid(income, food, rent, clothes) {
     showError(form, 'Please enter a number input greater than 0(zero)');
     return;
   }
+}
+
+function showError(parent, msg) {
+  const p = document.createElement('p');
+  p.classList.add('error');
+  p.textContent = msg;
+
+  parent.appendChild(p);
+
+  setTimeout(() => {
+    removeError(form);
+  }, 5000);
+}
+
+function removeError(parent) {
+  const errorMsg = parent.querySelector('.error');
+  parent.removeChild(errorMsg);
 }
 
 calculateBtn.addEventListener('click', handleSubmit);
