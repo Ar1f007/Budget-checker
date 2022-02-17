@@ -13,6 +13,7 @@
       rel="stylesheet"
     />
 
+    <!-- CUSTOM STYLES SHEET  -->
     <link rel="stylesheet" href="style.css" />
     <title>BudgetCheck</title>
   </head>
@@ -23,6 +24,7 @@
       </header>
 
       <main class="main">
+        <!-- IMAGE CONTAINER  -->
         <div class="img-box">
           <img
             src="https://images.unsplash.com/photo-1518976024611-28bf4b48222e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=685&q=80"
@@ -30,8 +32,10 @@
           />
         </div>
 
+        <!-- INCOME-EXPENSE BUDGET CONTAINER -->
         <div class="budget-container">
           <form>
+            <!-- INCOME AMOUNT FIELDS -->
             <div class="income">
               <h2>Income</h2>
               <div class="input-group">
@@ -44,7 +48,9 @@
                 />
               </div>
             </div>
+            <!-- END OF INCOME AMOUNT FIELDS -->
 
+            <!-- EXPENSES AMOUNT FIELDS -->
             <div class="expenses">
               <h2>Expenses</h2>
               <div class="input-group">
@@ -75,18 +81,24 @@
                 />
               </div>
             </div>
+            <!-- END OF EXPENSES AMOUNT FIELDS -->
 
+            <!-- CALCULATE AND CLEAR BUTTON CONTAINER -->
             <div class="btn-container">
               <button class="btn" id="calculate">Calculate</button>
               <button class="btn" id="clear">Clear</button>
             </div>
+            <!-- END OF CALCULATE AND CLEAR BUTTON CONTAINER -->
           </form>
 
+          <!-- TOTAL AND BALANCE OUTPUT FIELDS -->
           <div class="budget-info">
             <p id="total-expense">Total Expenses: <span>&nbsp;</span></p>
             <p id="balance">Balance: <span>&nbsp;</span></p>
           </div>
+          <!-- END OF TOTAL AND BALANCE OUTPUT FIELDS -->
 
+          <!-- SAVINGS INPUT FIELDS  -->
           <div class="input-group savings-input-group">
             <label for="save">Save: </label>
             <input
@@ -98,15 +110,20 @@
             <span>%</span>
             <button class="btn" id="save-btn">Save</button>
           </div>
+          <!-- END OF SAVINGS INPUT FIELDS -->
 
+          <!-- SAVINGS - saving-amount, remaining-balance OUTPUT FIELDS -->
           <div class="budget-info" id="budget-info">
             <p id="saving-amount">Saving Amount: <span>&nbsp;</span></p>
             <p id="remaining-balance">Remaining Balance: <span>&nbsp;</span></p>
           </div>
+          <!-- END OF SAVINGS - saving-amount, remaining-balance OUTPUT FIELDS -->
         </div>
+        <!-- END OF INCOME-EXPENSE BUDGET CONTAINER -->
       </main>
     </div>
 
+    <!-- JAVASCRIPT -->
     <script src="script.js"></script>
   </body>
 </html>

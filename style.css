@@ -1,4 +1,16 @@
+/* GLOBAL STYLES */
 :root {
+  --bg: #edf2f0;
+  --color-black: #2c3333;
+  --color-pickled-blue: #334756;
+  --color-bondi-blue: #0098b6;
+  --color-white-1: #efefef;
+  --color-white-2: #f9f9f9;
+  --color-gray: #d1d9e6;
+  --color-aqua-blue-1: #5adaff;
+  --color-aqua-blue-2: #00a6c7;
+  --color-aqua-blue-3: #00b4d8;
+  --color-red: #ed6663;
   --box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
@@ -16,14 +28,14 @@ html {
 body {
   font-family: 'Inter', sans-serif;
   font-size: 1.6rem;
-  color: #2c3333;
-  background-color: #edf2f0;
+  color: var(--color-black);
+  background-color: var(--bg);
 }
 
 h1 {
   text-align: center;
   margin-bottom: 4rem;
-  color: #334756;
+  color: var(--color-pickled-blueblue);
 }
 
 h2 {
@@ -43,11 +55,14 @@ form {
   padding: 5rem 0;
 }
 
+/* END OF GLOBAL STYLES */
+
+/* HEADER */
 .header h1 span {
-  color: #0098b6;
+  color: var(--color-bondi-blue);
 }
 
-/* budget styles */
+/* MAIN*/
 .main {
   width: 100%;
   display: flex;
@@ -55,6 +70,7 @@ form {
   align-items: stretch;
 }
 
+/* IMAGE CONTAINER */
 .img-box {
   width: 48%;
   border-radius: 3px;
@@ -68,6 +84,7 @@ form {
   display: block;
 }
 
+/* INCOME - EXPENSES */
 .budget-container {
   width: 48%;
   background-color: #ecf0f3;
@@ -95,20 +112,22 @@ form {
   border: 0;
   padding: 12px;
   border-radius: 4px;
-  background-color: #efefef;
+  background-color: var(--color-white-1);
   font-family: inherit;
   color: #888;
   font-size: 1.5rem;
 
-  box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #f9f9f9;
+  box-shadow: inset 2px 2px 4px var(--color-gray),
+    inset -2px -2px 4px var(--color-white-2);
 }
 
 .input:hover {
-  box-shadow: inset 4px 4px 4px #d1d9e6, inset -4px -4px 4px #f9f9f9;
+  box-shadow: inset 4px 4px 4px var(--color-gray),
+    inset -4px -4px 4px var(--color-white-2);
 }
 
 .input:focus {
-  outline: 1px solid #efefef;
+  outline: 1px solid var(--color-white-1);
 }
 
 .input::placeholder {
@@ -124,11 +143,12 @@ form {
   justify-content: center;
 }
 
+/* BUTTON SPECIFIC STYLES */
 .btn {
   background-image: radial-gradient(
     100% 100% at 100% 0,
-    #5adaff 0,
-    #00a6c7 100%
+    var(--color-aqua-blue-1) 0,
+    var(--color-aqua-blue-2) 100%
   );
   border: 0;
   border-radius: 6px;
@@ -150,21 +170,24 @@ form {
 }
 
 .btn:focus {
-  box-shadow: #00b4d8 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
-    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #00b4d8 0 -3px 0 inset;
+  box-shadow: var(--color-aqua-blue-3) 0 0 0 1.5px inset,
+    rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px,
+    var(--color-aqua-blue-3) 0 -3px 0 inset;
 }
 
 .btn:hover {
   box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
-    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #00b4d8 0 -3px 0 inset;
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px,
+    var(--color-aqua-blue-3) 0 -3px 0 inset;
   transform: translateY(-2px);
 }
 
 .btn:active {
-  box-shadow: #00b4d8 0 3px 7px inset;
+  box-shadow: var(--color-aqua-blue-3) 0 3px 7px inset;
   transform: translateY(2px);
 }
 
+/* TOTAL EXPENSES - BALANCE STYLES */
 .budget-info {
   margin: 3rem auto;
   text-align: center;
@@ -179,6 +202,7 @@ form {
   font-weight: 500;
 }
 
+/* SAVINGS SPECIFIC STYLES*/
 .savings-input-group .input--savings {
   width: 30%;
 }
@@ -194,13 +218,16 @@ form {
   margin-left: 0;
 }
 
+/* ERROR */
 .error {
   text-align: center;
-  color: #ed6663;
+  color: var(--color-red);
   font-weight: 700;
   margin: 1rem 0;
 }
+/* END OF MAIN  */
 
+/* RESPONSIVE */
 @media screen and (max-width: 768px) {
   .main {
     flex-direction: column;
@@ -218,3 +245,4 @@ form {
     margin-bottom: 3rem;
   }
 }
+/* END OF RESPONSIVE STYLES */
