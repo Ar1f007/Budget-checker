@@ -241,6 +241,10 @@ form {
     margin: 0 auto;
   }
 
+  .budget-container {
+    padding: 4rem 0 2rem;
+  }
+
   .img-box {
     margin-bottom: 3rem;
   }
