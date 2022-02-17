@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Font : INTER  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>BudgetCheck</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>Budget<span>Check</span> 💹</h1>
+      </header>
+
+      <main class="main">
+        <div class="img-box">
+          <img
+            src="https://images.unsplash.com/photo-1518976024611-28bf4b48222e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=685&q=80"
+            alt="A diary with some notes relating to budget"
+          />
+        </div>
+
+        <div class="budget-container">
+          <form>
+            <div class="income">
+              <h2>Income</h2>
+              <div class="input-group">
+                <label for="income">Income:</label>
+                <input
+                  type="text"
+                  id="income"
+                  placeholder="eg. 10000"
+                  class="input"
+                />
+              </div>
+            </div>
+
+            <div class="expenses">
+              <h2>Expenses</h2>
+              <div class="input-group">
+                <label for="food">Food:</label>
+                <input
+                  type="text"
+                  id="food"
+                  placeholder="eg. 10000"
+                  class="input"
+                />
+              </div>
+              <div class="input-group">
+                <label for="rent">Rent:</label>
+                <input
+                  type="text"
+                  id="rent"
+                  placeholder="eg. 10000"
+                  class="input"
+                />
+              </div>
+              <div class="input-group">
+                <label for="clothes">Clothes:</label>
+                <input
+                  type="text"
+                  id="clothes"
+                  placeholder="eg. 10000"
+                  class="input"
+                />
+              </div>
+            </div>
+
+            <button class="btn" id="calculate">Calculate</button>
+          </form>
+
+          <div class="budget-info">
+            <p id="total-expense">Total Expenses: <span>&nbsp;</span></p>
+            <p id="balance">Balance: <span>&nbsp;</span></p>
+          </div>
+
+          <div class="input-group savings-input-group">
+            <label for="save">Save: </label>
+            <input
+              type="text"
+              id="save"
+              placeholder="eg. 20"
+              class="input input--savings"
+            />
+            <span>%</span>
+            <button class="btn">Save</button>
+          </div>
+
+          <div class="budget-info">
+            <p id="saving-amount">Saving Amount: <span>&nbsp;</span></p>
+            <p id="balance">Remaining Balance: <span>&nbsp;</span></p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
