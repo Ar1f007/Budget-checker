@@ -5,23 +5,32 @@ const rentInput = document.querySelector('#rent');
 const clothesInput = document.querySelector('#clothes');
 const totalExpenseEl = document.querySelector('#total-expense');
 const balanceEl = document.querySelector('#balance');
+
+const savingsInput = document.querySelector('#save');
+const savingAmountEl = document.querySelector('#saving-amount');
+const remainingBalanceEl = document.querySelector('#remaining-balance');
+const budgetInfoEl = document.querySelector('#budget-info');
+const savingsAmountPlaceholder = savingAmountEl.querySelector('span');
+const remainingBalancePlaceholder = remainingBalanceEl.querySelector('span');
+
 const calculateBtn = document.querySelector('#calculate');
+const saveBtn = document.querySelector('#save-btn');
+const clearBtn = document.querySelector('#clear');
 
 let incomeAmount = null,
   foodCost = null,
   rentCost = null,
-  clothesCost = null;
+  clothesCost = null,
+  balance = null;
 
 function handleSubmit(e) {
   e.preventDefault();
 
   getTheInput();
 
-  isValid(incomeAmount, foodCost, rentCost, clothesCost);
-
-  calculateTotalExpenseAndBalance();
-
-  clearInput(incomeInput, foodInput, rentInput, clothesInput);
+  if (isValid(incomeAmount, foodCost, rentCost, clothesCost)) {
+    calculateTotalExpenseAndBalance();
+  }
 }
 
 function getTheInput() {
@@ -29,14 +38,6 @@ function getTheInput() {
   foodCost = foodInput.value;
   rentCost = rentInput.value;
   clothesCost = clothesInput.value;
-}
-
-function clearInput() {
-  const inputs = Array.from(arguments);
-
-  for (let input of inputs) {
-    input.value = '';
-  }
 }
 
 function calculateTotalExpenseAndBalance() {
@@ -52,7 +53,7 @@ function calculateTotalExpenseAndBalance() {
       'Your total expenses is greater than your total income! 💣'
     );
   } else {
-    const balance = Number(incomeAmount) - totalExpenses;
+    balance = Number(incomeAmount) - totalExpenses;
 
     if (balance) {
       balanceEl.querySelector('span').textContent = balance;
@@ -60,16 +61,20 @@ function calculateTotalExpenseAndBalance() {
   }
 }
 
-function isValid(income, food, rent, clothes) {
-  if (isNaN(income) || isNaN(food) || isNaN(rent) || isNaN(clothes)) {
-    showError(form, 'Please enter a number input value');
-    return;
+function isValid() {
+  const inputs = arguments;
+  for (const input of inputs) {
+    if (isNaN(input) || input < 0) {
+      if (isNaN(input)) {
+        showError(form, 'Please enter a number input value');
+      } else {
+        showError(form, 'Please enter a number input greater than 0(zero)');
+      }
+      return false;
+    }
   }
 
-  if (income < 0 || food < 0 || rent < 0 || clothes < 0) {
-    showError(form, 'Please enter a number input greater than 0(zero)');
-    return;
-  }
+  return true;
 }
 
 function showError(parent, msg) {
@@ -80,7 +85,7 @@ function showError(parent, msg) {
   parent.appendChild(p);
 
   setTimeout(() => {
-    removeError(form);
+    removeError(parent);
   }, 5000);
 }
 
@@ -89,4 +94,26 @@ function removeError(parent) {
   parent.removeChild(errorMsg);
 }
 
+function calculateSavings() {
+  savingsAmountPlaceholder.textContent = '';
+  remainingBalancePlaceholder.textContent = '';
+
+  const savingsPercentage = savingsInput.value;
+  if (isValid(savingsPercentage)) {
+    const savingAmount = (savingsPercentage * incomeAmount) / 100;
+
+    if (savingAmount > balance) {
+      showError(budgetInfoEl, 'Insufficient amount');
+      return;
+    }
+
+    if (savingAmount) {
+      savingsAmountPlaceholder.textContent = savingAmount;
+
+      remainingBalancePlaceholder.textContent = balance - savingAmount;
+    }
+  }
+}
+
 calculateBtn.addEventListener('click', handleSubmit);
+saveBtn.addEventListener('click', calculateSavings);

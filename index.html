@@ -19,7 +19,7 @@
   <body>
     <div class="container">
       <header class="header">
-        <h1>Budget<span>Check</span> 💹</h1>
+        <h1>Budget<span>Check</span> 💸</h1>
       </header>
 
       <main class="main">
@@ -52,7 +52,7 @@
                 <input
                   type="text"
                   id="food"
-                  placeholder="eg. 10000"
+                  placeholder="eg. 3000"
                   class="input"
                 />
               </div>
@@ -61,7 +61,7 @@
                 <input
                   type="text"
                   id="rent"
-                  placeholder="eg. 10000"
+                  placeholder="eg. 2000"
                   class="input"
                 />
               </div>
@@ -70,13 +70,16 @@
                 <input
                   type="text"
                   id="clothes"
-                  placeholder="eg. 10000"
+                  placeholder="eg. 500"
                   class="input"
                 />
               </div>
             </div>
 
-            <button class="btn" id="calculate">Calculate</button>
+            <div class="btn-container">
+              <button class="btn" id="calculate">Calculate</button>
+              <button class="btn" id="clear">Clear</button>
+            </div>
           </form>
 
           <div class="budget-info">
@@ -96,9 +99,9 @@
             <button class="btn" id="save-btn">Save</button>
           </div>
 
-          <div class="budget-info">
+          <div class="budget-info" id="budget-info">
             <p id="saving-amount">Saving Amount: <span>&nbsp;</span></p>
-            <p id="balance">Remaining Balance: <span>&nbsp;</span></p>
+            <p id="remaining-balance">Remaining Balance: <span>&nbsp;</span></p>
           </div>
         </div>
       </main>

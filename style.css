@@ -23,6 +23,9 @@ body {
 h1 {
   text-align: center;
   margin-bottom: 4rem;
+  color: #03045e;
+  color: #395b64;
+  color: #334756;
 }
 
 h2 {
@@ -43,7 +46,8 @@ form {
 }
 
 .header h1 span {
-  color: #16c60c;
+  color: #00b4d8;
+  color: #0098b6;
 }
 
 /* budget styles */
@@ -51,6 +55,7 @@ form {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: stretch;
 }
 
 .img-box {
@@ -113,6 +118,11 @@ form {
   margin: 3rem 0;
 }
 
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+
 .btn {
   background-image: radial-gradient(
     100% 100% at 100% 0,
@@ -127,16 +137,15 @@ form {
   color: #fff;
   cursor: pointer;
   font-family: inherit;
-  height: 48px;
+  height: 40px;
   line-height: 1;
   overflow: hidden;
   padding-left: 16px;
   padding-right: 16px;
   transition: box-shadow 0.15s, transform 0.15s;
   white-space: nowrap;
-  font-size: 1.8rem;
-  display: block;
-  margin: 0 auto;
+  font-size: 1.6rem;
+  margin: 0 1rem;
 }
 
 .btn:focus {
@@ -165,6 +174,10 @@ form {
   font-weight: 700;
 }
 
+.budget-info p span {
+  font-weight: 500;
+}
+
 .savings-input-group .input--savings {
   width: 30%;
 }
@@ -183,6 +196,7 @@ form {
 .error {
   text-align: center;
   color: #ed6663;
+  font-weight: 700;
   margin: 1rem 0;
 }
 
