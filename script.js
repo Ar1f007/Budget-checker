@@ -3,9 +3,9 @@ const incomeInput = document.querySelector('#income');
 const foodInput = document.querySelector('#food');
 const rentInput = document.querySelector('#rent');
 const clothesInput = document.querySelector('#clothes');
-const calculateBtn = document.querySelector('#calculate');
 const totalExpenseEl = document.querySelector('#total-expense');
 const balanceEl = document.querySelector('#balance');
+const calculateBtn = document.querySelector('#calculate');
 
 let incomeAmount = null,
   foodCost = null,
@@ -20,6 +20,23 @@ function handleSubmit(e) {
   isValid(incomeAmount, foodCost, rentCost, clothesCost);
 
   calculateTotalExpenseAndBalance();
+
+  clearInput(incomeInput, foodInput, rentInput, clothesInput);
+}
+
+function getTheInput() {
+  incomeAmount = incomeInput.value;
+  foodCost = foodInput.value;
+  rentCost = rentInput.value;
+  clothesCost = clothesInput.value;
+}
+
+function clearInput() {
+  const inputs = Array.from(arguments);
+
+  for (let input of inputs) {
+    input.value = '';
+  }
 }
 
 function calculateTotalExpenseAndBalance() {
@@ -41,13 +58,6 @@ function calculateTotalExpenseAndBalance() {
       balanceEl.querySelector('span').textContent = balance;
     }
   }
-}
-
-function getTheInput() {
-  incomeAmount = incomeInput.value;
-  foodCost = foodInput.value;
-  rentCost = rentInput.value;
-  clothesCost = clothesInput.value;
 }
 
 function isValid(income, food, rent, clothes) {
