@@ -26,6 +26,8 @@ let incomeAmount = null,
 function handleSubmit(e) {
   e.preventDefault();
 
+  removePreviousError();
+
   getTheInput();
 
   if (isValid(incomeAmount, foodCost, rentCost, clothesCost)) {
@@ -33,6 +35,15 @@ function handleSubmit(e) {
   }
 }
 
+function removePreviousError() {
+  const errors = Array.from(document.querySelectorAll('.error'));
+
+  if (errors) {
+    for (const error of errors) {
+      error.remove();
+    }
+  }
+}
 function getTheInput() {
   incomeAmount = incomeInput.value;
   foodCost = foodInput.value;
@@ -104,6 +115,7 @@ function removeError(parent) {
 }
 
 function calculateSavings() {
+  removePreviousError();
   savingsAmountPlaceholder.textContent = '';
   remainingBalancePlaceholder.textContent = '';
 
