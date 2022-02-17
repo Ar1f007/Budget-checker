@@ -3,15 +3,17 @@ const incomeInput = document.querySelector('#income');
 const foodInput = document.querySelector('#food');
 const rentInput = document.querySelector('#rent');
 const clothesInput = document.querySelector('#clothes');
-const totalExpenseEl = document.querySelector('#total-expense');
-const balanceEl = document.querySelector('#balance');
+const totalExpensePlaceholder =
+  document.querySelector('#total-expense').firstElementChild;
+const balancePlaceholder = document.querySelector('#balance').firstElementChild;
 
 const savingsInput = document.querySelector('#save');
-const savingAmountEl = document.querySelector('#saving-amount');
-const remainingBalanceEl = document.querySelector('#remaining-balance');
 const budgetInfoEl = document.querySelector('#budget-info');
-const savingsAmountPlaceholder = savingAmountEl.querySelector('span');
-const remainingBalancePlaceholder = remainingBalanceEl.querySelector('span');
+
+const savingsAmountPlaceholder =
+  document.querySelector('#saving-amount').firstElementChild;
+const remainingBalancePlaceholder =
+  document.querySelector('#remaining-balance').firstElementChild;
 
 const calculateBtn = document.querySelector('#calculate');
 const saveBtn = document.querySelector('#save-btn');
@@ -26,6 +28,8 @@ let incomeAmount = null,
 function handleSubmit(e) {
   e.preventDefault();
 
+  totalExpensePlaceholder.textContent = '';
+  balancePlaceholder.textContent = '';
   removePreviousError();
 
   getTheInput();
@@ -58,25 +62,27 @@ function clearInput(e) {
   rentInput.value = '';
   clothesInput.value = '';
   savingsInput.value = '';
+  totalExpensePlaceholder.textContent = '';
+  balancePlaceholder.textContent = '';
+  savingsAmountPlaceholder.textContent = '';
+  remainingBalancePlaceholder.textContent = '';
 }
 
 function calculateTotalExpenseAndBalance() {
   const totalExpenses =
     Number(foodCost) + Number(rentCost) + Number(clothesCost);
   if (totalExpenses) {
-    totalExpenseEl.querySelector('span').textContent = totalExpenses;
+    totalExpensePlaceholder.textContent = totalExpenses;
   }
 
   if (totalExpenses > incomeAmount) {
-    showError(
-      form,
-      'Your total expenses is greater than your total income! 💣'
-    );
+    incomeAmount = 0;
+    showError(form, 'Expenses exceeded the income amount! 💣');
   } else {
     balance = Number(incomeAmount) - totalExpenses;
 
-    if (balance) {
-      balanceEl.querySelector('span').textContent = balance;
+    if (balance !== undefined) {
+      balancePlaceholder.textContent = balance;
     }
   }
 }
@@ -84,11 +90,13 @@ function calculateTotalExpenseAndBalance() {
 function isValid() {
   const inputs = arguments;
   for (const input of inputs) {
-    if (isNaN(input) || input < 0) {
+    if (isNaN(input) || input < 0 || input === '') {
       if (isNaN(input)) {
         showError(form, 'Please enter a number input value');
-      } else {
+      } else if (input < 0) {
         showError(form, 'Please enter a number input greater than 0(zero)');
+      } else {
+        showError(form, 'Please provide inputs');
       }
       return false;
     }
@@ -110,8 +118,12 @@ function showError(parent, msg) {
 }
 
 function removeError(parent) {
-  const errorMsg = parent.querySelector('.error');
-  parent.removeChild(errorMsg);
+  // const errorMsg = parent.querySelector('.error');
+  // parent.removeChild(errorMsg);
+  const errorEl = parent.querySelector('.error');
+  if (errorEl) {
+    errorEl.remove();
+  }
 }
 
 function calculateSavings() {
@@ -122,8 +134,9 @@ function calculateSavings() {
   const savingsPercentage = savingsInput.value;
   if (isValid(savingsPercentage)) {
     const savingAmount = (savingsPercentage * incomeAmount) / 100;
+    console.log(savingAmount);
 
-    if (savingAmount > balance) {
+    if (savingAmount > balance || savingAmount == 0) {
       showError(budgetInfoEl, 'Insufficient amount');
       return;
     }
