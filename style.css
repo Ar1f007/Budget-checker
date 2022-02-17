@@ -1,0 +1,205 @@
+:root {
+  --box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+    rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.6rem;
+  color: #2c3333;
+  background-color: #e9e3e3;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+form {
+  width: 100%;
+}
+
+.container {
+  width: 100vw;
+  max-width: 1024px;
+  margin-inline: auto;
+  padding: 5rem 0;
+}
+
+.header h1 span {
+  color: #16c60c;
+}
+
+/* budget styles */
+.main {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.img-box {
+  width: 48%;
+  border-radius: 3px;
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+}
+
+.img-box img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.budget-container {
+  width: 48%;
+  background-color: #f7f7f7;
+  padding: 4rem 4rem 0;
+  border-radius: 3px;
+  box-shadow: var(--box-shadow);
+}
+
+.input-group {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  width: 20%;
+  font-weight: 500;
+  text-align: right;
+}
+
+.input {
+  width: 60%;
+  border: 0;
+  padding: 12px;
+  border-radius: 4px;
+  background-color: #efefef;
+  font-family: inherit;
+  color: #888;
+  font-size: 1.5rem;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+
+.input:focus {
+  outline: 1px solid #efefef;
+}
+
+.input::placeholder {
+  color: #999;
+}
+
+.expenses {
+  margin: 3rem 0;
+}
+
+.btn {
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    #5adaff 0,
+    #00a6c7 100%
+  );
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  height: 48px;
+  line-height: 1;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  transition: box-shadow 0.15s, transform 0.15s;
+  white-space: nowrap;
+  font-size: 1.8rem;
+  display: block;
+  margin: 0 auto;
+}
+
+.btn:focus {
+  box-shadow: #00b4d8 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #00b4d8 0 -3px 0 inset;
+}
+
+.btn:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #00b4d8 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  box-shadow: #00b4d8 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.budget-info {
+  margin: 3rem auto;
+  text-align: center;
+}
+
+.budget-info p {
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.savings-input-group .input--savings {
+  width: 30%;
+}
+
+.savings-input-group label {
+  margin-right: 2rem;
+}
+.savings-input-group span {
+  margin: 0 2rem;
+}
+
+.savings-input-group .btn {
+  margin-left: 0;
+}
+
+.error {
+  text-align: center;
+  color: #ed6663;
+  margin: 1rem 0;
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .img-box,
+  .budget-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .img-box {
+    margin-bottom: 3rem;
+  }
+}
